@@ -2,7 +2,7 @@
 
 namespace VKCommunity.DAL.Models
 {
-    public class PostMessage
+    public class PostMessage : BaseEntity
     {
         public string Message { get; set; }
         public string PictureUrl { get; set; }

@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json.Serialization;
 using VKCommunity.DAL;
 using VKCommunity.DAL.Models;
 using VKCommunity.RepositoryStorage.Repository;
@@ -24,10 +25,14 @@ namespace VKCommunityWebApi
         {
             services.AddDbContext<VKCommunityContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("VKConnectionString"));
+                options.UseSqlServer(Configuration.GetConnectionString("VKConnectionString"), x => x.MigrationsAssembly("VKCommunity.Migrations"));
             });
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(s =>
+            {
+                s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "VKCommunityWebApi", Version = "v1" });
