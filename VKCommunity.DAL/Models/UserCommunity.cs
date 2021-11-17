@@ -1,4 +1,6 @@
-﻿namespace VKCommunity.DAL.Models
+﻿using VKCommunity.DAL.Models.Base;
+
+namespace VKCommunity.DAL.Models
 {
     public class UserCommunity : BaseEntity
     {

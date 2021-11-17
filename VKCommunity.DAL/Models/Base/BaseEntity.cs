@@ -1,4 +1,4 @@
-﻿namespace VKCommunity.DAL.Models
+﻿namespace VKCommunity.DAL.Models.Base
 {
     public class BaseEntity : IBaseEntity<int>
     {

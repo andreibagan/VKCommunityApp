@@ -1,4 +1,5 @@
 ﻿using System;
+using VKCommunity.DAL.Models.Base;
 
 namespace VKCommunity.DAL.Models
 {

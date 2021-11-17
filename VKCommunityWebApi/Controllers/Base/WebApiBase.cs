@@ -1,14 +1,12 @@
 ﻿using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using VKCommunity.DAL.Models;
+using VKCommunity.DAL.Models.Base;
 using VKCommunity.RepositoryStorage.Repository;
 
-namespace VKCommunityWebApi.Controllers
+namespace VKCommunityWebApi.Controllers.Base
 {
     public interface IWebApiBase<TEntity>
         where TEntity: class
@@ -21,6 +19,8 @@ namespace VKCommunityWebApi.Controllers
         ActionResult Patch(int id, JsonPatchDocument<TEntity> patchDoc);
     }
 
+    [ApiController]
+    [Route("api/[controller]")]
     public abstract class WebApiBase<TEntity, TController> : ControllerBase, IWebApiBase<TEntity>
         where TEntity: class, IBaseEntity<int>
         where TController: class
@@ -40,22 +40,7 @@ namespace VKCommunityWebApi.Controllers
             _repository.Create(item);
             _repository.SaveChanges();
 
-            return CreatedAtRoute(nameof(Get), new { id = item.Id }, item);
-        }
-
-        [HttpDelete("{id}")]
-        public ActionResult Delete(int id)
-        {
-            var item = _repository.Get(id);
-            if (item == null)
-            {
-                return NotFound();
-            }
-
-            _repository.Delete(item);
-            _repository.SaveChanges();
-
-            return NoContent();
+            return CreatedAtAction(nameof(Get), new { id = item.Id }, item);
         }
 
         [HttpGet]
@@ -113,6 +98,21 @@ namespace VKCommunityWebApi.Controllers
             }
 
             _repository.Update(itemNew);
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
+        {
+            var item = _repository.Get(id);
+            if (item == null)
+            {
+                return NotFound();
+            }
+
+            _repository.Delete(item);
             _repository.SaveChanges();
 
             return NoContent();
