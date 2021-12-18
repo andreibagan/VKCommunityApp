@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using VKCommunity.DAL;
+using VKCommunity.DAL.Models.Base;
 
 namespace VKCommunity.RepositoryStorage.Repository
 {
@@ -60,9 +61,10 @@ namespace VKCommunity.RepositoryStorage.Repository
             return includeProperties.Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
         }
 
-        public void Update(T item)
+        public void Update(T itemOld, T itemNew)
         {
-            _vKCommunityContext.Entry<T>(item).State = EntityState.Modified;
+            _vKCommunityContext.Entry<T>(itemOld).State = EntityState.Modified;
+            itemOld = itemNew;
         }
 
         public bool SaveChanges()

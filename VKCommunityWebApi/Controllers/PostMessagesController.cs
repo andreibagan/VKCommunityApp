@@ -6,9 +6,9 @@ using VKCommunityWebApi.Controllers.Base;
 
 namespace VKCommunityWebApi.Controllers
 {
-    public class PostMessagesController : WebApiBase<PostMessage, PostMessagesController>
+    public class PostMessagesController : WebApiBase<Message, PostMessagesController>
     {
-        public PostMessagesController(IRepository<PostMessage> repository, ILogger<PostMessagesController> logger) : base(repository, logger)
+        public PostMessagesController(IRepository<Message> repository, ILogger<PostMessagesController> logger) : base(repository, logger)
         {
 
         }

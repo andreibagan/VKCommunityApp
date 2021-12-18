@@ -41,7 +41,7 @@ namespace VKCommunityWebApi
             services.AddScoped<IRepository<User>, Repository<User>>();
             services.AddScoped<IRepository<Community>, Repository<Community>>();
             services.AddScoped<IRepository<UserCommunity>, Repository<UserCommunity>>();
-            services.AddScoped<IRepository<PostMessage>, Repository<PostMessage>>();
+            services.AddScoped<IRepository<Message>, Repository<Message>>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

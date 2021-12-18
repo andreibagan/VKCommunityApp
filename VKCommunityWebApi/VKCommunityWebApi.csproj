@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\VKCommunity.Migrations\VKCommunity.Migrations.csproj" />
+    <ProjectReference Include="..\VKCommunity.RepositoryStorage\VKCommunity.RepositoryStorage.csproj" />
     <ProjectReference Include="..\VKCommunity.Repository\VKCommunity.RepositoryStorage.csproj" />
   </ItemGroup>
 

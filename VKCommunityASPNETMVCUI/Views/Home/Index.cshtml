@@ -1,0 +1,32 @@
+﻿@model UserModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div>
+    <h1>New User!</h1>
+    <h2>Name: @Model?.UserName</h2>
+</div>
+
+<form method="get" asp-controller="Home" asp-action="Index">
+    <div>
+        <input type="text" name="id" />
+    </div>
+    <div>
+        <input type="submit" value="Send" />
+    </div>
+</form>
+
+<form method="post" asp-controller="Home" asp-action="Index" >
+    <div>
+        <input type="text" name="UserName" />
+    </div>
+    <div>
+        <input type="submit" value="Send"/>
+    </div>
+</form>

@@ -1,13 +1,14 @@
 ﻿using System;
-using VKCommunity.DAL.Models.Base;
 
-namespace VKCommunity.DAL.Models
+namespace VKCommunity.Service.Models
 {
-    public class PostMessage : BaseEntity
+    public class MessageModel
     {
-        public string Message { get; set; }
+        public string MessageContent { get; set; }
         public string PictureUrl { get; set; }
         public string Author { get; set; }
         public DateTime Created { get; } = DateTime.UtcNow;
+
+        public CommunityModel Community { get; set; }
     }
 }

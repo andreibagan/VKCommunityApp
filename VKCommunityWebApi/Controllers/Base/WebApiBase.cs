@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
 using VKCommunity.DAL.Models.Base;
+using VKCommunity.RepositoryStorage;
 using VKCommunity.RepositoryStorage.Repository;
 
 namespace VKCommunityWebApi.Controllers.Base
@@ -97,7 +98,7 @@ namespace VKCommunityWebApi.Controllers.Base
                 return NotFound();
             }
 
-            _repository.Update(itemNew);
+            _repository.Update(itemOld, itemNew);
             _repository.SaveChanges();
 
             return NoContent();

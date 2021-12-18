@@ -13,6 +13,6 @@ namespace VKCommunity.DAL
         public DbSet<User> Users { get; set; }
         public DbSet<Community> Communities { get; set; }
         public DbSet<UserCommunity> UserCommunities { get; set; }
-        public DbSet<PostMessage> PostMessages { get; set; }
+        public DbSet<Message> PostMessages { get; set; }
     }
 }

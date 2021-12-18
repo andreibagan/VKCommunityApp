@@ -14,7 +14,7 @@ namespace VKCommunity.RepositoryStorage.Repository
         IEnumerable<T> Get(Func<T, bool> predicate);
         IEnumerable<T> Get(params Expression<Func<T, object>>[] includeProperties);
 
-        void Update(T item);
+        void Update(T itemOld, T itemNew);
 
         void Delete(T item);
 
